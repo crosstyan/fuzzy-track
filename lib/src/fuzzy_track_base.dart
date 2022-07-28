@@ -70,9 +70,9 @@ class ZMF<T extends num> extends MembershipFunction<T> {
   final double shoulder;
 
   num value(num x) {
-    var a = shoulder;
-    var b = foot;
-    var mid = (foot + shoulder) / 2;
+    final a = shoulder;
+    final b = foot;
+    final mid = (foot + shoulder) / 2;
     if (x <= a) {
       return 1;
     } else if (x >= b) {
@@ -93,19 +93,19 @@ class ZMF<T extends num> extends MembershipFunction<T> {
 }
 
 class FuzzyHR extends FuzzyVariable<num> {
-  double baseHR;
-  double targetMul;
-  double lowMul;
-  double highMul;
-  double sigma;
-  late var targetHR = baseHR * targetMul;
-  late var lowHR = baseHR * lowMul;
-  late var highHR = baseHR * highMul;
+  final double baseHR;
+  final double targetMul;
+  final double lowMul;
+  final double highMul;
+  final double sigma;
+  late final targetHR = baseHR * targetMul;
+  late final lowHR = baseHR * lowMul;
+  late final highHR = baseHR * highMul;
 
-  late var low = FuzzySet(ZMF(foot: targetHR, shoulder: lowHR), lowHR);
-  late var gaussian = GaussianMF(mean: targetHR, stdDev: sigma);
-  late var target = FuzzySet(gaussian, gaussian.representativeValue);
-  late var high = FuzzySet(SMF(foot: targetHR, shoulder: highHR), highHR);
+  late final low = FuzzySet(ZMF(foot: targetHR, shoulder: lowHR), lowHR);
+  late final gaussian = GaussianMF(mean: targetHR, stdDev: sigma);
+  late final target = FuzzySet(gaussian, gaussian.representativeValue);
+  late final high = FuzzySet(SMF(foot: targetHR, shoulder: highHR), highHR);
 
   // late var low = FuzzySet.LeftShoulder(0, lowHR, targetHR);
   // late var target = FuzzySet.Triangle(targetHR - 10, targetHR, targetHR + 10);
@@ -122,10 +122,10 @@ class FuzzyHR extends FuzzyVariable<num> {
 }
 
 class FuzzyTime extends FuzzyVariable<num> {
-  double shortFoot;
-  double longShoulder;
-  late var short = FuzzySet(ZMF(foot: shortFoot, shoulder: 0), 0);
-  late var long = FuzzySet(SMF(foot: 0, shoulder: longShoulder), 90);
+  final double shortFoot;
+  final double longShoulder;
+  late final short = FuzzySet(ZMF(foot: shortFoot, shoulder: 0), 0);
+  late final long = FuzzySet(SMF(foot: 0, shoulder: longShoulder), 90);
 
   // late var short = FuzzySet.LeftShoulder(0, 5, 30);
   // late var long = FuzzySet.RightShoulder(30, 60, 100);
@@ -136,10 +136,10 @@ class FuzzyTime extends FuzzyVariable<num> {
 }
 
 class FuzzyResult extends FuzzyVariable<num> {
-  double sigma;
-  late var up = FuzzySet(SMF(foot: 0, shoulder: 100), 100);
-  late var down = FuzzySet(ZMF(foot: 0, shoulder: -100), -100);
-  late var nc = FuzzySet(GaussianMF(mean: 0, stdDev: sigma), 0);
+  final double sigma;
+  late final up = FuzzySet(SMF(foot: 0, shoulder: 100), 100);
+  late final down = FuzzySet(ZMF(foot: 0, shoulder: -100), -100);
+  late final nc = FuzzySet(GaussianMF(mean: 0, stdDev: sigma), 0);
 
   // late var up = FuzzySet.RightShoulder(0, 50, 100);
   // late var down = FuzzySet.LeftShoulder(-100, -50, 0);
@@ -151,23 +151,23 @@ class FuzzyResult extends FuzzyVariable<num> {
 }
 
 class FIS {
-  double baseHR;
-  double targetHRMul;
-  double lowHRMul;
-  double highHRMul;
-  double sigmaHR;
-  double shortFoot;
-  double longShoulder;
-  double sigmaResult;
-  var rules = FuzzyRuleBase();
-  late var hr = FuzzyHR(
+  final double baseHR;
+  final double targetHRMul;
+  final double lowHRMul;
+  final double highHRMul;
+  final double sigmaHR;
+  final double shortFoot;
+  final double longShoulder;
+  final double sigmaResult;
+  final rules = FuzzyRuleBase();
+  late final hr = FuzzyHR(
       baseHR: baseHR,
       targetMul: targetHRMul,
       lowMul: lowHRMul,
       highMul: highHRMul,
       sigma: sigmaHR);
-  late var time = FuzzyTime(longShoulder: longShoulder, shortFoot: shortFoot);
-  late var result = FuzzyResult(sigma: sigmaResult);
+  late final time = FuzzyTime(longShoulder: longShoulder, shortFoot: shortFoot);
+  late final result = FuzzyResult(sigma: sigmaResult);
 
   FIS(
       {this.baseHR = 70,
@@ -188,7 +188,7 @@ class FIS {
   }
 
   num? eval(num hr, num time) {
-    var output = result.createOutputPlaceholder();
+    final output = result.createOutputPlaceholder();
     rules.resolve(
         inputs: [this.hr.assign(hr), this.time.assign(time)],
         outputs: [output]);
