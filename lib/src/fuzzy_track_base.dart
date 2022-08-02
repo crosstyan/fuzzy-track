@@ -124,12 +124,13 @@ class FuzzyHR extends FuzzyVariable<num> {
 class FuzzyTime extends FuzzyVariable<num> {
   final double shortFoot;
   final double longShoulder;
+  final double longFoot;
   late final short = FuzzySet(ZMF(foot: shortFoot, shoulder: 0), 0);
-  late final long = FuzzySet(SMF(foot: 0, shoulder: longShoulder), 90);
+  late final long = FuzzySet(SMF(foot: longFoot, shoulder: longShoulder), 90);
 
   // late var short = FuzzySet.LeftShoulder(0, 5, 30);
   // late var long = FuzzySet.RightShoulder(30, 60, 100);
-  FuzzyTime({this.longShoulder = 120, this.shortFoot = 30}) {
+  FuzzyTime({this.longShoulder = 120, this.shortFoot = 30, this.longFoot = 0}) {
     sets = [short, long];
     init();
   }
@@ -159,6 +160,7 @@ class FIS {
   final double shortFoot;
   final double longShoulder;
   final double sigmaResult;
+  final double longFoot;
   final rules = FuzzyRuleBase();
   late final hr = FuzzyHR(
       baseHR: baseHR,
@@ -166,7 +168,7 @@ class FIS {
       lowMul: lowHRMul,
       highMul: highHRMul,
       sigma: sigmaHR);
-  late final time = FuzzyTime(longShoulder: longShoulder, shortFoot: shortFoot);
+  late final time = FuzzyTime(longShoulder: longShoulder, shortFoot: shortFoot, longFoot: longFoot);
   late final result = FuzzyResult(sigma: sigmaResult);
 
   FIS(
@@ -177,7 +179,8 @@ class FIS {
       this.sigmaHR = 10,
       this.shortFoot = 30,
       this.longShoulder = 120,
-      this.sigmaResult = 10}) {
+      this.sigmaResult = 10,
+      this.longFoot = 0}) {
     rules.addRules([
       (hr.target & time.long) >> (result.nc),
       (hr.low & time.long) >> (result.up),
