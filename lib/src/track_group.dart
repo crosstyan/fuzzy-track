@@ -7,83 +7,11 @@ import './track_data.dart';
 import 'package:tuple/tuple.dart';
 import 'package:collection/collection.dart';
 
-class TrackFIS extends FIS {
-  final Duration delay;
-  final double lengthMeter;
-  late final double speed = lengthMeter / (delay.inMilliseconds / 1000);
-
-  static getSpeed(double lengthMeter, Duration delay) {
-    return lengthMeter / (delay.inMilliseconds / 1000);
-  }
-
-  static getSpeedKmh(double lengthMeter, Duration delay) {
-    return (lengthMeter / (delay.inMilliseconds / 1000)) * 3.6;
-  }
-
-  get speedKmh => speed * 3.6;
-
-  TrackFIS({
-    this.delay = const Duration(milliseconds: 100),
-    this.lengthMeter = 0.1,
-    baseHR = 60,
-    targetHRMul = 1.5,
-    lowHRMul = 1,
-    highHRMul = 2,
-    sigmaHR = 10,
-    shortFoot = 30,
-    longShoulder = 90,
-    longFoot = 0,
-    sigmaResult = 10,
-  }) : super(
-            baseHR: baseHR,
-            targetHRMul: targetHRMul,
-            lowHRMul: lowHRMul,
-            highHRMul: highHRMul,
-            sigmaHR: sigmaHR,
-            shortFoot: shortFoot,
-            longShoulder: longShoulder,
-            sigmaResult: sigmaResult,
-            longFoot: longFoot);
-
-  factory TrackFIS.fromInit(TrackInitFIS data) {
-    return TrackFIS(
-      baseHR: data.baseHR,
-      targetHRMul: data.targetHRMul,
-      lowHRMul: data.lowHRMul,
-      highHRMul: data.highHRMul,
-      sigmaHR: data.sigmaHR,
-      shortFoot: data.shortFoot,
-      longShoulder: data.longShoulder,
-      sigmaResult: data.sigmaResult,
-      longFoot: data.longFoot,
-      delay: data.delay,
-      lengthMeter: data.lengthMeter,
-    );
-  }
-
-  TrackInitFIS getInit() {
-    return TrackInitFIS(
-      baseHR: baseHR,
-      targetHRMul: targetHRMul,
-      lowHRMul: lowHRMul,
-      highHRMul: highHRMul,
-      sigmaHR: sigmaHR,
-      shortFoot: shortFoot,
-      longShoulder: longShoulder,
-      sigmaResult: sigmaResult,
-      longFoot: longFoot,
-    );
-  }
-}
-
 enum TrackMove {
   up,
   down,
   notChanged,
 }
-
-///return Tuple3(_lastPossibility, this.time, _current.delay.inMilliseconds);
-typedef StepResult = Tuple3<double, double, int>;
 
 class TrackGroupPure {
   List<TrackFIS> _groupCache = [];
@@ -113,6 +41,7 @@ class TrackGroupPure {
       late final int resTime;
       late final List<bool> resWindow;
       final DateTime resLastTickTime = state.lastTickTime.add(diff);
+      // TODO: use a function
       if (ans & direction) {
         resIndex = _upIdx(state.index);
         resTime = 0;
