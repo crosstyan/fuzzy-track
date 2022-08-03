@@ -14,13 +14,12 @@ class TrackData with _$TrackData {
   @JsonSerializable(fieldRename: FieldRename.pascal, explicitToJson: true)
   const factory TrackData({
     required List<TrackInitFIS> group,
-    required int time,
-    required int windowSize,
+    @Default(0) int time,
+    @Default(4) int windowSize,
     @Default(0) double possibility,
     @Default(Duration(milliseconds: 100)) Duration delay,
     required List<bool> resultWindow,
     required DateTime lastTickTime,
-    required DateTime initTickTime,
     required int index,
   }) = _TrackData;
 

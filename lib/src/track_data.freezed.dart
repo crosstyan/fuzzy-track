@@ -27,7 +27,6 @@ mixin _$TrackData {
   Duration get delay => throw _privateConstructorUsedError;
   List<bool> get resultWindow => throw _privateConstructorUsedError;
   DateTime get lastTickTime => throw _privateConstructorUsedError;
-  DateTime get initTickTime => throw _privateConstructorUsedError;
   int get index => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,7 +47,6 @@ abstract class $TrackDataCopyWith<$Res> {
       Duration delay,
       List<bool> resultWindow,
       DateTime lastTickTime,
-      DateTime initTickTime,
       int index});
 }
 
@@ -69,7 +67,6 @@ class _$TrackDataCopyWithImpl<$Res> implements $TrackDataCopyWith<$Res> {
     Object? delay = freezed,
     Object? resultWindow = freezed,
     Object? lastTickTime = freezed,
-    Object? initTickTime = freezed,
     Object? index = freezed,
   }) {
     return _then(_value.copyWith(
@@ -101,10 +98,6 @@ class _$TrackDataCopyWithImpl<$Res> implements $TrackDataCopyWith<$Res> {
           ? _value.lastTickTime
           : lastTickTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      initTickTime: initTickTime == freezed
-          ? _value.initTickTime
-          : initTickTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       index: index == freezed
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -127,7 +120,6 @@ abstract class _$$_TrackDataCopyWith<$Res> implements $TrackDataCopyWith<$Res> {
       Duration delay,
       List<bool> resultWindow,
       DateTime lastTickTime,
-      DateTime initTickTime,
       int index});
 }
 
@@ -150,7 +142,6 @@ class __$$_TrackDataCopyWithImpl<$Res> extends _$TrackDataCopyWithImpl<$Res>
     Object? delay = freezed,
     Object? resultWindow = freezed,
     Object? lastTickTime = freezed,
-    Object? initTickTime = freezed,
     Object? index = freezed,
   }) {
     return _then(_$_TrackData(
@@ -182,10 +173,6 @@ class __$$_TrackDataCopyWithImpl<$Res> extends _$TrackDataCopyWithImpl<$Res>
           ? _value.lastTickTime
           : lastTickTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      initTickTime: initTickTime == freezed
-          ? _value.initTickTime
-          : initTickTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       index: index == freezed
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -200,13 +187,12 @@ class __$$_TrackDataCopyWithImpl<$Res> extends _$TrackDataCopyWithImpl<$Res>
 class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
   const _$_TrackData(
       {required final List<TrackInitFIS> group,
-      required this.time,
-      required this.windowSize,
+      this.time = 0,
+      this.windowSize = 4,
       this.possibility = 0,
       this.delay = const Duration(milliseconds: 100),
       required final List<bool> resultWindow,
       required this.lastTickTime,
-      required this.initTickTime,
       required this.index})
       : assert(time >= 0),
         assert(windowSize > 0),
@@ -225,8 +211,10 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
   }
 
   @override
+  @JsonKey()
   final int time;
   @override
+  @JsonKey()
   final int windowSize;
   @override
   @JsonKey()
@@ -244,13 +232,11 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
   @override
   final DateTime lastTickTime;
   @override
-  final DateTime initTickTime;
-  @override
   final int index;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TrackData(group: $group, time: $time, windowSize: $windowSize, possibility: $possibility, delay: $delay, resultWindow: $resultWindow, lastTickTime: $lastTickTime, initTickTime: $initTickTime, index: $index)';
+    return 'TrackData(group: $group, time: $time, windowSize: $windowSize, possibility: $possibility, delay: $delay, resultWindow: $resultWindow, lastTickTime: $lastTickTime, index: $index)';
   }
 
   @override
@@ -265,7 +251,6 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
       ..add(DiagnosticsProperty('delay', delay))
       ..add(DiagnosticsProperty('resultWindow', resultWindow))
       ..add(DiagnosticsProperty('lastTickTime', lastTickTime))
-      ..add(DiagnosticsProperty('initTickTime', initTickTime))
       ..add(DiagnosticsProperty('index', index));
   }
 
@@ -285,8 +270,6 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
                 .equals(other._resultWindow, _resultWindow) &&
             const DeepCollectionEquality()
                 .equals(other.lastTickTime, lastTickTime) &&
-            const DeepCollectionEquality()
-                .equals(other.initTickTime, initTickTime) &&
             const DeepCollectionEquality().equals(other.index, index));
   }
 
@@ -301,7 +284,6 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
       const DeepCollectionEquality().hash(delay),
       const DeepCollectionEquality().hash(_resultWindow),
       const DeepCollectionEquality().hash(lastTickTime),
-      const DeepCollectionEquality().hash(initTickTime),
       const DeepCollectionEquality().hash(index));
 
   @JsonKey(ignore: true)
@@ -320,13 +302,12 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
 abstract class _TrackData implements TrackData {
   const factory _TrackData(
       {required final List<TrackInitFIS> group,
-      required final int time,
-      required final int windowSize,
+      final int time,
+      final int windowSize,
       final double possibility,
       final Duration delay,
       required final List<bool> resultWindow,
       required final DateTime lastTickTime,
-      required final DateTime initTickTime,
       required final int index}) = _$_TrackData;
 
   factory _TrackData.fromJson(Map<String, dynamic> json) =
@@ -346,8 +327,6 @@ abstract class _TrackData implements TrackData {
   List<bool> get resultWindow;
   @override
   DateTime get lastTickTime;
-  @override
-  DateTime get initTickTime;
   @override
   int get index;
   @override
