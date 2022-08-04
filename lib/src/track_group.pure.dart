@@ -18,11 +18,12 @@ class TrackGroupPure {
       final tempTime = state.time + diff.inSeconds;
       final tempIdx = _validIdx(state.index);
       final current = _groupCache[tempIdx];
-      final possibility = current.eval(hr, tempTime);
-      final res = TrackGroup.decision(possibility!.toDouble());
+      final possibility = (current.eval(hr, tempTime) ?? 0) / 100;
+      final res = TrackGroup.decision(possibility.toDouble());
       final direction = possibility > 0;
+      final List<bool> windowClone = List.from(state.resultWindow);
       final tempWindow =
-      TrackGroup.addDequeue(state.resultWindow, state.windowSize, res);
+      TrackGroup.addDequeue(windowClone, state.windowSize, res);
       final bool ans = tempWindow.reduce((value, element) => value & element);
       late final int resIndex;
       late final int resTime;
@@ -48,6 +49,7 @@ class TrackGroupPure {
           windowSize: state.windowSize,
           possibility: possibility.toDouble(),
           delay: current.delay,
+          hr: hr,
           resultWindow: resWindow,
           lastTickTime: resLastTickTime,
           index: resIndex);

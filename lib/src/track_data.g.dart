@@ -16,6 +16,7 @@ _$_TrackData _$$_TrackDataFromJson(Map<String, dynamic> json) => _$_TrackData(
       delay: json['Delay'] == null
           ? const Duration(milliseconds: 100)
           : Duration(microseconds: json['Delay'] as int),
+      hr: (json['Hr'] as num?)?.toDouble() ?? 0,
       resultWindow: (json['ResultWindow'] as List<dynamic>)
           .map((e) => e as bool)
           .toList(),
@@ -30,6 +31,7 @@ Map<String, dynamic> _$$_TrackDataToJson(_$_TrackData instance) =>
       'WindowSize': instance.windowSize,
       'Possibility': instance.possibility,
       'Delay': instance.delay.inMicroseconds,
+      'Hr': instance.hr,
       'ResultWindow': instance.resultWindow,
       'LastTickTime': instance.lastTickTime.toIso8601String(),
       'Index': instance.index,

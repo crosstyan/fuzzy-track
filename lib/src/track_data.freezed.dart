@@ -25,6 +25,7 @@ mixin _$TrackData {
   int get windowSize => throw _privateConstructorUsedError;
   double get possibility => throw _privateConstructorUsedError;
   Duration get delay => throw _privateConstructorUsedError;
+  double get hr => throw _privateConstructorUsedError;
   List<bool> get resultWindow => throw _privateConstructorUsedError;
   DateTime get lastTickTime => throw _privateConstructorUsedError;
   int get index => throw _privateConstructorUsedError;
@@ -45,6 +46,7 @@ abstract class $TrackDataCopyWith<$Res> {
       int windowSize,
       double possibility,
       Duration delay,
+      double hr,
       List<bool> resultWindow,
       DateTime lastTickTime,
       int index});
@@ -65,6 +67,7 @@ class _$TrackDataCopyWithImpl<$Res> implements $TrackDataCopyWith<$Res> {
     Object? windowSize = freezed,
     Object? possibility = freezed,
     Object? delay = freezed,
+    Object? hr = freezed,
     Object? resultWindow = freezed,
     Object? lastTickTime = freezed,
     Object? index = freezed,
@@ -90,6 +93,10 @@ class _$TrackDataCopyWithImpl<$Res> implements $TrackDataCopyWith<$Res> {
           ? _value.delay
           : delay // ignore: cast_nullable_to_non_nullable
               as Duration,
+      hr: hr == freezed
+          ? _value.hr
+          : hr // ignore: cast_nullable_to_non_nullable
+              as double,
       resultWindow: resultWindow == freezed
           ? _value.resultWindow
           : resultWindow // ignore: cast_nullable_to_non_nullable
@@ -118,6 +125,7 @@ abstract class _$$_TrackDataCopyWith<$Res> implements $TrackDataCopyWith<$Res> {
       int windowSize,
       double possibility,
       Duration delay,
+      double hr,
       List<bool> resultWindow,
       DateTime lastTickTime,
       int index});
@@ -140,6 +148,7 @@ class __$$_TrackDataCopyWithImpl<$Res> extends _$TrackDataCopyWithImpl<$Res>
     Object? windowSize = freezed,
     Object? possibility = freezed,
     Object? delay = freezed,
+    Object? hr = freezed,
     Object? resultWindow = freezed,
     Object? lastTickTime = freezed,
     Object? index = freezed,
@@ -165,6 +174,10 @@ class __$$_TrackDataCopyWithImpl<$Res> extends _$TrackDataCopyWithImpl<$Res>
           ? _value.delay
           : delay // ignore: cast_nullable_to_non_nullable
               as Duration,
+      hr: hr == freezed
+          ? _value.hr
+          : hr // ignore: cast_nullable_to_non_nullable
+              as double,
       resultWindow: resultWindow == freezed
           ? _value._resultWindow
           : resultWindow // ignore: cast_nullable_to_non_nullable
@@ -191,6 +204,7 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
       this.windowSize = 4,
       this.possibility = 0,
       this.delay = const Duration(milliseconds: 100),
+      this.hr = 0,
       required final List<bool> resultWindow,
       required this.lastTickTime,
       required this.index})
@@ -222,6 +236,9 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
   @override
   @JsonKey()
   final Duration delay;
+  @override
+  @JsonKey()
+  final double hr;
   final List<bool> _resultWindow;
   @override
   List<bool> get resultWindow {
@@ -236,7 +253,7 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TrackData(group: $group, time: $time, windowSize: $windowSize, possibility: $possibility, delay: $delay, resultWindow: $resultWindow, lastTickTime: $lastTickTime, index: $index)';
+    return 'TrackData(group: $group, time: $time, windowSize: $windowSize, possibility: $possibility, delay: $delay, hr: $hr, resultWindow: $resultWindow, lastTickTime: $lastTickTime, index: $index)';
   }
 
   @override
@@ -249,6 +266,7 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
       ..add(DiagnosticsProperty('windowSize', windowSize))
       ..add(DiagnosticsProperty('possibility', possibility))
       ..add(DiagnosticsProperty('delay', delay))
+      ..add(DiagnosticsProperty('hr', hr))
       ..add(DiagnosticsProperty('resultWindow', resultWindow))
       ..add(DiagnosticsProperty('lastTickTime', lastTickTime))
       ..add(DiagnosticsProperty('index', index));
@@ -266,6 +284,7 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
             const DeepCollectionEquality()
                 .equals(other.possibility, possibility) &&
             const DeepCollectionEquality().equals(other.delay, delay) &&
+            const DeepCollectionEquality().equals(other.hr, hr) &&
             const DeepCollectionEquality()
                 .equals(other._resultWindow, _resultWindow) &&
             const DeepCollectionEquality()
@@ -282,6 +301,7 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
       const DeepCollectionEquality().hash(windowSize),
       const DeepCollectionEquality().hash(possibility),
       const DeepCollectionEquality().hash(delay),
+      const DeepCollectionEquality().hash(hr),
       const DeepCollectionEquality().hash(_resultWindow),
       const DeepCollectionEquality().hash(lastTickTime),
       const DeepCollectionEquality().hash(index));
@@ -306,6 +326,7 @@ abstract class _TrackData implements TrackData {
       final int windowSize,
       final double possibility,
       final Duration delay,
+      final double hr,
       required final List<bool> resultWindow,
       required final DateTime lastTickTime,
       required final int index}) = _$_TrackData;
@@ -323,6 +344,8 @@ abstract class _TrackData implements TrackData {
   double get possibility;
   @override
   Duration get delay;
+  @override
+  double get hr;
   @override
   List<bool> get resultWindow;
   @override

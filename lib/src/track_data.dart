@@ -18,6 +18,7 @@ class TrackData with _$TrackData {
     @Default(4) int windowSize,
     @Default(0) double possibility,
     @Default(Duration(milliseconds: 100)) Duration delay,
+    @Default(0) double hr,
     required List<bool> resultWindow,
     required DateTime lastTickTime,
     required int index,
