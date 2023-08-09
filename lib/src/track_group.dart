@@ -13,6 +13,7 @@ enum TrackMove {
 
 class TrackGroup {
   final double baseHR;
+  final double targetHRMul;
   double _time = 0;
   int _index = 0;
   int windowSize = 5;
@@ -40,23 +41,54 @@ class TrackGroup {
     return _group.length - 1;
   }
 
-  static List<TrackInitFIS> getDefaultGroup(double baseHR) {
+  static List<TrackInitFIS> getDefaultGroup(double baseHR, double targetHRMul) {
     return [
-      TrackInitFIS(speed: 0.5, baseHR: baseHR, shortFoot: 30),
-      TrackInitFIS(speed: 1, baseHR: baseHR, shortFoot: 10),
-      TrackInitFIS(speed: 1.25, baseHR: baseHR, shortFoot: 10),
-      TrackInitFIS(speed: 1.5, baseHR: baseHR, shortFoot: 5, sigmaHR: 8),
-      TrackInitFIS(speed: 1.75, baseHR: baseHR, shortFoot: 5, sigmaHR: 5),
-      TrackInitFIS(speed: 2, baseHR: baseHR, shortFoot: 10, sigmaHR: 3),
-      TrackInitFIS(speed: 2.5, baseHR: baseHR, shortFoot: 5, sigmaHR: 3),
-      TrackInitFIS(speed: 3, baseHR: baseHR, shortFoot: 3, sigmaHR: 2),
+      TrackInitFIS(
+          speed: 0.5, baseHR: baseHR, shortFoot: 30, targetHRMul: targetHRMul),
+      TrackInitFIS(
+          speed: 1, baseHR: baseHR, shortFoot: 10, targetHRMul: targetHRMul),
+      TrackInitFIS(
+          speed: 1.25, baseHR: baseHR, shortFoot: 10, targetHRMul: targetHRMul),
+      TrackInitFIS(
+          speed: 1.5,
+          baseHR: baseHR,
+          shortFoot: 5,
+          sigmaHR: 8,
+          targetHRMul: targetHRMul),
+      TrackInitFIS(
+          speed: 1.75,
+          baseHR: baseHR,
+          shortFoot: 5,
+          sigmaHR: 5,
+          targetHRMul: targetHRMul),
+      TrackInitFIS(
+          speed: 2,
+          baseHR: baseHR,
+          shortFoot: 10,
+          sigmaHR: 3,
+          targetHRMul: targetHRMul),
+      TrackInitFIS(
+          speed: 2.5,
+          baseHR: baseHR,
+          shortFoot: 5,
+          sigmaHR: 3,
+          targetHRMul: targetHRMul),
+      TrackInitFIS(
+          speed: 3,
+          baseHR: baseHR,
+          shortFoot: 3,
+          sigmaHR: 2,
+          targetHRMul: targetHRMul),
     ];
   }
 
   TrackGroup(
-      {this.baseHR = 60, required this.initTickTime, this.windowSize = 5})
-      : _groupInit = TrackGroup.getDefaultGroup(baseHR),
-        _group = TrackGroup.getDefaultGroup(baseHR)
+      {this.baseHR = 60,
+      required this.initTickTime,
+      this.windowSize = 5,
+      this.targetHRMul = 1.5})
+      : _groupInit = TrackGroup.getDefaultGroup(baseHR, targetHRMul),
+        _group = TrackGroup.getDefaultGroup(baseHR, targetHRMul)
             .map((data) => TrackFIS.fromInit(data))
             .toList(),
         _lastTickTime = initTickTime;
