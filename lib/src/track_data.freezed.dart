@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'track_data.dart';
 
@@ -24,7 +24,9 @@ mixin _$TrackData {
   int get time => throw _privateConstructorUsedError;
   int get windowSize => throw _privateConstructorUsedError;
   double get possibility => throw _privateConstructorUsedError;
-  Duration get delay => throw _privateConstructorUsedError;
+
+  /// speed in m/s
+  double get speed => throw _privateConstructorUsedError;
   double get hr => throw _privateConstructorUsedError;
   List<bool> get resultWindow => throw _privateConstructorUsedError;
   DateTime get lastTickTime => throw _privateConstructorUsedError;
@@ -39,13 +41,14 @@ mixin _$TrackData {
 /// @nodoc
 abstract class $TrackDataCopyWith<$Res> {
   factory $TrackDataCopyWith(TrackData value, $Res Function(TrackData) then) =
-      _$TrackDataCopyWithImpl<$Res>;
+      _$TrackDataCopyWithImpl<$Res, TrackData>;
+  @useResult
   $Res call(
       {List<TrackInitFIS> group,
       int time,
       int windowSize,
       double possibility,
-      Duration delay,
+      double speed,
       double hr,
       List<bool> resultWindow,
       DateTime lastTickTime,
@@ -53,63 +56,66 @@ abstract class $TrackDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TrackDataCopyWithImpl<$Res> implements $TrackDataCopyWith<$Res> {
+class _$TrackDataCopyWithImpl<$Res, $Val extends TrackData>
+    implements $TrackDataCopyWith<$Res> {
   _$TrackDataCopyWithImpl(this._value, this._then);
 
-  final TrackData _value;
   // ignore: unused_field
-  final $Res Function(TrackData) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? group = freezed,
-    Object? time = freezed,
-    Object? windowSize = freezed,
-    Object? possibility = freezed,
-    Object? delay = freezed,
-    Object? hr = freezed,
-    Object? resultWindow = freezed,
-    Object? lastTickTime = freezed,
-    Object? index = freezed,
+    Object? group = null,
+    Object? time = null,
+    Object? windowSize = null,
+    Object? possibility = null,
+    Object? speed = null,
+    Object? hr = null,
+    Object? resultWindow = null,
+    Object? lastTickTime = null,
+    Object? index = null,
   }) {
     return _then(_value.copyWith(
-      group: group == freezed
+      group: null == group
           ? _value.group
           : group // ignore: cast_nullable_to_non_nullable
               as List<TrackInitFIS>,
-      time: time == freezed
+      time: null == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as int,
-      windowSize: windowSize == freezed
+      windowSize: null == windowSize
           ? _value.windowSize
           : windowSize // ignore: cast_nullable_to_non_nullable
               as int,
-      possibility: possibility == freezed
+      possibility: null == possibility
           ? _value.possibility
           : possibility // ignore: cast_nullable_to_non_nullable
               as double,
-      delay: delay == freezed
-          ? _value.delay
-          : delay // ignore: cast_nullable_to_non_nullable
-              as Duration,
-      hr: hr == freezed
+      speed: null == speed
+          ? _value.speed
+          : speed // ignore: cast_nullable_to_non_nullable
+              as double,
+      hr: null == hr
           ? _value.hr
           : hr // ignore: cast_nullable_to_non_nullable
               as double,
-      resultWindow: resultWindow == freezed
+      resultWindow: null == resultWindow
           ? _value.resultWindow
           : resultWindow // ignore: cast_nullable_to_non_nullable
               as List<bool>,
-      lastTickTime: lastTickTime == freezed
+      lastTickTime: null == lastTickTime
           ? _value.lastTickTime
           : lastTickTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      index: index == freezed
+      index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -119,12 +125,13 @@ abstract class _$$_TrackDataCopyWith<$Res> implements $TrackDataCopyWith<$Res> {
           _$_TrackData value, $Res Function(_$_TrackData) then) =
       __$$_TrackDataCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {List<TrackInitFIS> group,
       int time,
       int windowSize,
       double possibility,
-      Duration delay,
+      double speed,
       double hr,
       List<bool> resultWindow,
       DateTime lastTickTime,
@@ -132,61 +139,60 @@ abstract class _$$_TrackDataCopyWith<$Res> implements $TrackDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TrackDataCopyWithImpl<$Res> extends _$TrackDataCopyWithImpl<$Res>
+class __$$_TrackDataCopyWithImpl<$Res>
+    extends _$TrackDataCopyWithImpl<$Res, _$_TrackData>
     implements _$$_TrackDataCopyWith<$Res> {
   __$$_TrackDataCopyWithImpl(
       _$_TrackData _value, $Res Function(_$_TrackData) _then)
-      : super(_value, (v) => _then(v as _$_TrackData));
+      : super(_value, _then);
 
-  @override
-  _$_TrackData get _value => super._value as _$_TrackData;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? group = freezed,
-    Object? time = freezed,
-    Object? windowSize = freezed,
-    Object? possibility = freezed,
-    Object? delay = freezed,
-    Object? hr = freezed,
-    Object? resultWindow = freezed,
-    Object? lastTickTime = freezed,
-    Object? index = freezed,
+    Object? group = null,
+    Object? time = null,
+    Object? windowSize = null,
+    Object? possibility = null,
+    Object? speed = null,
+    Object? hr = null,
+    Object? resultWindow = null,
+    Object? lastTickTime = null,
+    Object? index = null,
   }) {
     return _then(_$_TrackData(
-      group: group == freezed
+      group: null == group
           ? _value._group
           : group // ignore: cast_nullable_to_non_nullable
               as List<TrackInitFIS>,
-      time: time == freezed
+      time: null == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as int,
-      windowSize: windowSize == freezed
+      windowSize: null == windowSize
           ? _value.windowSize
           : windowSize // ignore: cast_nullable_to_non_nullable
               as int,
-      possibility: possibility == freezed
+      possibility: null == possibility
           ? _value.possibility
           : possibility // ignore: cast_nullable_to_non_nullable
               as double,
-      delay: delay == freezed
-          ? _value.delay
-          : delay // ignore: cast_nullable_to_non_nullable
-              as Duration,
-      hr: hr == freezed
+      speed: null == speed
+          ? _value.speed
+          : speed // ignore: cast_nullable_to_non_nullable
+              as double,
+      hr: null == hr
           ? _value.hr
           : hr // ignore: cast_nullable_to_non_nullable
               as double,
-      resultWindow: resultWindow == freezed
+      resultWindow: null == resultWindow
           ? _value._resultWindow
           : resultWindow // ignore: cast_nullable_to_non_nullable
               as List<bool>,
-      lastTickTime: lastTickTime == freezed
+      lastTickTime: null == lastTickTime
           ? _value.lastTickTime
           : lastTickTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      index: index == freezed
+      index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
@@ -203,7 +209,7 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
       this.time = 0,
       this.windowSize = 4,
       this.possibility = 0,
-      this.delay = const Duration(milliseconds: 100),
+      this.speed = 1,
       this.hr = 0,
       required final List<bool> resultWindow,
       required this.lastTickTime,
@@ -220,6 +226,7 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
   final List<TrackInitFIS> _group;
   @override
   List<TrackInitFIS> get group {
+    if (_group is EqualUnmodifiableListView) return _group;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_group);
   }
@@ -233,15 +240,18 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
   @override
   @JsonKey()
   final double possibility;
+
+  /// speed in m/s
   @override
   @JsonKey()
-  final Duration delay;
+  final double speed;
   @override
   @JsonKey()
   final double hr;
   final List<bool> _resultWindow;
   @override
   List<bool> get resultWindow {
+    if (_resultWindow is EqualUnmodifiableListView) return _resultWindow;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_resultWindow);
   }
@@ -253,7 +263,7 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TrackData(group: $group, time: $time, windowSize: $windowSize, possibility: $possibility, delay: $delay, hr: $hr, resultWindow: $resultWindow, lastTickTime: $lastTickTime, index: $index)';
+    return 'TrackData(group: $group, time: $time, windowSize: $windowSize, possibility: $possibility, speed: $speed, hr: $hr, resultWindow: $resultWindow, lastTickTime: $lastTickTime, index: $index)';
   }
 
   @override
@@ -265,7 +275,7 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
       ..add(DiagnosticsProperty('time', time))
       ..add(DiagnosticsProperty('windowSize', windowSize))
       ..add(DiagnosticsProperty('possibility', possibility))
-      ..add(DiagnosticsProperty('delay', delay))
+      ..add(DiagnosticsProperty('speed', speed))
       ..add(DiagnosticsProperty('hr', hr))
       ..add(DiagnosticsProperty('resultWindow', resultWindow))
       ..add(DiagnosticsProperty('lastTickTime', lastTickTime))
@@ -278,18 +288,18 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
         (other.runtimeType == runtimeType &&
             other is _$_TrackData &&
             const DeepCollectionEquality().equals(other._group, _group) &&
-            const DeepCollectionEquality().equals(other.time, time) &&
-            const DeepCollectionEquality()
-                .equals(other.windowSize, windowSize) &&
-            const DeepCollectionEquality()
-                .equals(other.possibility, possibility) &&
-            const DeepCollectionEquality().equals(other.delay, delay) &&
-            const DeepCollectionEquality().equals(other.hr, hr) &&
+            (identical(other.time, time) || other.time == time) &&
+            (identical(other.windowSize, windowSize) ||
+                other.windowSize == windowSize) &&
+            (identical(other.possibility, possibility) ||
+                other.possibility == possibility) &&
+            (identical(other.speed, speed) || other.speed == speed) &&
+            (identical(other.hr, hr) || other.hr == hr) &&
             const DeepCollectionEquality()
                 .equals(other._resultWindow, _resultWindow) &&
-            const DeepCollectionEquality()
-                .equals(other.lastTickTime, lastTickTime) &&
-            const DeepCollectionEquality().equals(other.index, index));
+            (identical(other.lastTickTime, lastTickTime) ||
+                other.lastTickTime == lastTickTime) &&
+            (identical(other.index, index) || other.index == index));
   }
 
   @JsonKey(ignore: true)
@@ -297,17 +307,18 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_group),
-      const DeepCollectionEquality().hash(time),
-      const DeepCollectionEquality().hash(windowSize),
-      const DeepCollectionEquality().hash(possibility),
-      const DeepCollectionEquality().hash(delay),
-      const DeepCollectionEquality().hash(hr),
+      time,
+      windowSize,
+      possibility,
+      speed,
+      hr,
       const DeepCollectionEquality().hash(_resultWindow),
-      const DeepCollectionEquality().hash(lastTickTime),
-      const DeepCollectionEquality().hash(index));
+      lastTickTime,
+      index);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TrackDataCopyWith<_$_TrackData> get copyWith =>
       __$$_TrackDataCopyWithImpl<_$_TrackData>(this, _$identity);
 
@@ -325,7 +336,7 @@ abstract class _TrackData implements TrackData {
       final int time,
       final int windowSize,
       final double possibility,
-      final Duration delay,
+      final double speed,
       final double hr,
       required final List<bool> resultWindow,
       required final DateTime lastTickTime,
@@ -343,7 +354,9 @@ abstract class _TrackData implements TrackData {
   @override
   double get possibility;
   @override
-  Duration get delay;
+
+  /// speed in m/s
+  double get speed;
   @override
   double get hr;
   @override

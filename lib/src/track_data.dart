@@ -1,6 +1,6 @@
 // This file is "main.dart"
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:fuzzy_track/src/track_init_fis.dart';
 
 part 'track_data.freezed.dart';
@@ -17,12 +17,15 @@ class TrackData with _$TrackData {
     @Default(0) int time,
     @Default(4) int windowSize,
     @Default(0) double possibility,
-    @Default(Duration(milliseconds: 100)) Duration delay,
+
+    /// speed in m/s
+    @Default(1) double speed,
     @Default(0) double hr,
     required List<bool> resultWindow,
     required DateTime lastTickTime,
     required int index,
   }) = _TrackData;
 
-  factory TrackData.fromJson(Map<String, Object?> json) => _$TrackDataFromJson(json);
+  factory TrackData.fromJson(Map<String, Object?> json) =>
+      _$TrackDataFromJson(json);
 }

@@ -1,10 +1,7 @@
 import 'dart:math';
+
 import 'package:flutter/foundation.dart';
 import 'package:fuzzy_track/fuzzy_track.dart';
-import './track_init_fis.dart';
-import './track_data.dart';
-import 'package:tuple/tuple.dart';
-import 'package:collection/collection.dart';
 
 part 'track_group.pure.dart';
 
@@ -45,43 +42,14 @@ class TrackGroup {
 
   static List<TrackInitFIS> getDefaultGroup(double baseHR) {
     return [
-      TrackInitFIS(
-          delay: const Duration(milliseconds: 80),
-          baseHR: baseHR,
-          shortFoot: 30),
-      TrackInitFIS(
-          delay: const Duration(milliseconds: 60),
-          baseHR: baseHR,
-          shortFoot: 10),
-      TrackInitFIS(
-          delay: const Duration(milliseconds: 50),
-          baseHR: baseHR,
-          shortFoot: 10),
-      TrackInitFIS(
-          delay: const Duration(milliseconds: 40),
-          baseHR: baseHR,
-          shortFoot: 5,
-          sigmaHR: 8),
-      TrackInitFIS(
-          delay: const Duration(milliseconds: 35),
-          baseHR: baseHR,
-          shortFoot: 5,
-          sigmaHR: 5),
-      TrackInitFIS(
-          delay: const Duration(milliseconds: 30),
-          baseHR: baseHR,
-          shortFoot: 10,
-          sigmaHR: 3),
-      TrackInitFIS(
-          delay: const Duration(milliseconds: 27),
-          baseHR: baseHR,
-          shortFoot: 5,
-          sigmaHR: 3),
-      TrackInitFIS(
-          delay: const Duration(milliseconds: 25),
-          baseHR: baseHR,
-          shortFoot: 3,
-          sigmaHR: 2),
+      TrackInitFIS(speed: 0.5, baseHR: baseHR, shortFoot: 30),
+      TrackInitFIS(speed: 1, baseHR: baseHR, shortFoot: 10),
+      TrackInitFIS(speed: 1.25, baseHR: baseHR, shortFoot: 10),
+      TrackInitFIS(speed: 1.5, baseHR: baseHR, shortFoot: 5, sigmaHR: 8),
+      TrackInitFIS(speed: 1.75, baseHR: baseHR, shortFoot: 5, sigmaHR: 5),
+      TrackInitFIS(speed: 2, baseHR: baseHR, shortFoot: 10, sigmaHR: 3),
+      TrackInitFIS(speed: 2.5, baseHR: baseHR, shortFoot: 5, sigmaHR: 3),
+      TrackInitFIS(speed: 3, baseHR: baseHR, shortFoot: 3, sigmaHR: 2),
     ];
   }
 
@@ -180,7 +148,7 @@ class TrackGroup {
         time: _time.toInt(),
         windowSize: windowSize,
         possibility: _lastPossibility,
-        delay: _current.delay,
+        speed: _current.speed,
         resultWindow: _resultWindow,
         lastTickTime: _lastTickTime,
         index: index);

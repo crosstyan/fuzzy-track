@@ -8,9 +8,7 @@ part of 'track_init_fis.dart';
 
 _$_TrackInitFIS _$$_TrackInitFISFromJson(Map<String, dynamic> json) =>
     _$_TrackInitFIS(
-      delay: json['Delay'] == null
-          ? const Duration(milliseconds: 100)
-          : Duration(microseconds: json['Delay'] as int),
+      speed: (json['Speed'] as num?)?.toDouble() ?? 1,
       lengthMeter: (json['LengthMeter'] as num?)?.toDouble() ?? 0.1,
       baseHR: (json['BaseHR'] as num?)?.toDouble() ?? 60,
       targetHRMul: (json['TargetHRMul'] as num?)?.toDouble() ?? 1.5,
@@ -25,7 +23,7 @@ _$_TrackInitFIS _$$_TrackInitFISFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_TrackInitFISToJson(_$_TrackInitFIS instance) =>
     <String, dynamic>{
-      'Delay': instance.delay.inMicroseconds,
+      'Speed': instance.speed,
       'LengthMeter': instance.lengthMeter,
       'BaseHR': instance.baseHR,
       'TargetHRMul': instance.targetHRMul,

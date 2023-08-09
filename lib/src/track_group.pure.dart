@@ -23,7 +23,7 @@ class TrackGroupPure {
       final direction = possibility > 0;
       final List<bool> windowClone = List.from(state.resultWindow);
       final tempWindow =
-      TrackGroup.addDequeue(windowClone, state.windowSize, res);
+          TrackGroup.addDequeue(windowClone, state.windowSize, res);
       final bool ans = tempWindow.reduce((value, element) => value & element);
       late final int resIndex;
       late final int resTime;
@@ -48,7 +48,7 @@ class TrackGroupPure {
           time: resTime,
           windowSize: state.windowSize,
           possibility: possibility.toDouble(),
-          delay: current.delay,
+          speed: current.speed,
           hr: hr,
           resultWindow: resWindow,
           lastTickTime: resLastTickTime,
@@ -82,4 +82,3 @@ class TrackGroupPure {
     }
   }
 }
-

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'track_init_fis.dart';
 
@@ -20,7 +20,7 @@ TrackInitFIS _$TrackInitFISFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TrackInitFIS {
-  Duration get delay => throw _privateConstructorUsedError;
+  double get speed => throw _privateConstructorUsedError;
   double get lengthMeter => throw _privateConstructorUsedError;
   double get baseHR => throw _privateConstructorUsedError;
   double get targetHRMul => throw _privateConstructorUsedError;
@@ -42,9 +42,10 @@ mixin _$TrackInitFIS {
 abstract class $TrackInitFISCopyWith<$Res> {
   factory $TrackInitFISCopyWith(
           TrackInitFIS value, $Res Function(TrackInitFIS) then) =
-      _$TrackInitFISCopyWithImpl<$Res>;
+      _$TrackInitFISCopyWithImpl<$Res, TrackInitFIS>;
+  @useResult
   $Res call(
-      {Duration delay,
+      {double speed,
       double lengthMeter,
       double baseHR,
       double targetHRMul,
@@ -58,73 +59,76 @@ abstract class $TrackInitFISCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TrackInitFISCopyWithImpl<$Res> implements $TrackInitFISCopyWith<$Res> {
+class _$TrackInitFISCopyWithImpl<$Res, $Val extends TrackInitFIS>
+    implements $TrackInitFISCopyWith<$Res> {
   _$TrackInitFISCopyWithImpl(this._value, this._then);
 
-  final TrackInitFIS _value;
   // ignore: unused_field
-  final $Res Function(TrackInitFIS) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? delay = freezed,
-    Object? lengthMeter = freezed,
-    Object? baseHR = freezed,
-    Object? targetHRMul = freezed,
-    Object? lowHRMul = freezed,
-    Object? highHRMul = freezed,
-    Object? sigmaHR = freezed,
-    Object? shortFoot = freezed,
-    Object? longShoulder = freezed,
-    Object? longFoot = freezed,
-    Object? sigmaResult = freezed,
+    Object? speed = null,
+    Object? lengthMeter = null,
+    Object? baseHR = null,
+    Object? targetHRMul = null,
+    Object? lowHRMul = null,
+    Object? highHRMul = null,
+    Object? sigmaHR = null,
+    Object? shortFoot = null,
+    Object? longShoulder = null,
+    Object? longFoot = null,
+    Object? sigmaResult = null,
   }) {
     return _then(_value.copyWith(
-      delay: delay == freezed
-          ? _value.delay
-          : delay // ignore: cast_nullable_to_non_nullable
-              as Duration,
-      lengthMeter: lengthMeter == freezed
+      speed: null == speed
+          ? _value.speed
+          : speed // ignore: cast_nullable_to_non_nullable
+              as double,
+      lengthMeter: null == lengthMeter
           ? _value.lengthMeter
           : lengthMeter // ignore: cast_nullable_to_non_nullable
               as double,
-      baseHR: baseHR == freezed
+      baseHR: null == baseHR
           ? _value.baseHR
           : baseHR // ignore: cast_nullable_to_non_nullable
               as double,
-      targetHRMul: targetHRMul == freezed
+      targetHRMul: null == targetHRMul
           ? _value.targetHRMul
           : targetHRMul // ignore: cast_nullable_to_non_nullable
               as double,
-      lowHRMul: lowHRMul == freezed
+      lowHRMul: null == lowHRMul
           ? _value.lowHRMul
           : lowHRMul // ignore: cast_nullable_to_non_nullable
               as double,
-      highHRMul: highHRMul == freezed
+      highHRMul: null == highHRMul
           ? _value.highHRMul
           : highHRMul // ignore: cast_nullable_to_non_nullable
               as double,
-      sigmaHR: sigmaHR == freezed
+      sigmaHR: null == sigmaHR
           ? _value.sigmaHR
           : sigmaHR // ignore: cast_nullable_to_non_nullable
               as double,
-      shortFoot: shortFoot == freezed
+      shortFoot: null == shortFoot
           ? _value.shortFoot
           : shortFoot // ignore: cast_nullable_to_non_nullable
               as double,
-      longShoulder: longShoulder == freezed
+      longShoulder: null == longShoulder
           ? _value.longShoulder
           : longShoulder // ignore: cast_nullable_to_non_nullable
               as double,
-      longFoot: longFoot == freezed
+      longFoot: null == longFoot
           ? _value.longFoot
           : longFoot // ignore: cast_nullable_to_non_nullable
               as double,
-      sigmaResult: sigmaResult == freezed
+      sigmaResult: null == sigmaResult
           ? _value.sigmaResult
           : sigmaResult // ignore: cast_nullable_to_non_nullable
               as double,
-    ));
+    ) as $Val);
   }
 }
 
@@ -135,8 +139,9 @@ abstract class _$$_TrackInitFISCopyWith<$Res>
           _$_TrackInitFIS value, $Res Function(_$_TrackInitFIS) then) =
       __$$_TrackInitFISCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
-      {Duration delay,
+      {double speed,
       double lengthMeter,
       double baseHR,
       double targetHRMul,
@@ -151,71 +156,69 @@ abstract class _$$_TrackInitFISCopyWith<$Res>
 
 /// @nodoc
 class __$$_TrackInitFISCopyWithImpl<$Res>
-    extends _$TrackInitFISCopyWithImpl<$Res>
+    extends _$TrackInitFISCopyWithImpl<$Res, _$_TrackInitFIS>
     implements _$$_TrackInitFISCopyWith<$Res> {
   __$$_TrackInitFISCopyWithImpl(
       _$_TrackInitFIS _value, $Res Function(_$_TrackInitFIS) _then)
-      : super(_value, (v) => _then(v as _$_TrackInitFIS));
+      : super(_value, _then);
 
-  @override
-  _$_TrackInitFIS get _value => super._value as _$_TrackInitFIS;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? delay = freezed,
-    Object? lengthMeter = freezed,
-    Object? baseHR = freezed,
-    Object? targetHRMul = freezed,
-    Object? lowHRMul = freezed,
-    Object? highHRMul = freezed,
-    Object? sigmaHR = freezed,
-    Object? shortFoot = freezed,
-    Object? longShoulder = freezed,
-    Object? longFoot = freezed,
-    Object? sigmaResult = freezed,
+    Object? speed = null,
+    Object? lengthMeter = null,
+    Object? baseHR = null,
+    Object? targetHRMul = null,
+    Object? lowHRMul = null,
+    Object? highHRMul = null,
+    Object? sigmaHR = null,
+    Object? shortFoot = null,
+    Object? longShoulder = null,
+    Object? longFoot = null,
+    Object? sigmaResult = null,
   }) {
     return _then(_$_TrackInitFIS(
-      delay: delay == freezed
-          ? _value.delay
-          : delay // ignore: cast_nullable_to_non_nullable
-              as Duration,
-      lengthMeter: lengthMeter == freezed
+      speed: null == speed
+          ? _value.speed
+          : speed // ignore: cast_nullable_to_non_nullable
+              as double,
+      lengthMeter: null == lengthMeter
           ? _value.lengthMeter
           : lengthMeter // ignore: cast_nullable_to_non_nullable
               as double,
-      baseHR: baseHR == freezed
+      baseHR: null == baseHR
           ? _value.baseHR
           : baseHR // ignore: cast_nullable_to_non_nullable
               as double,
-      targetHRMul: targetHRMul == freezed
+      targetHRMul: null == targetHRMul
           ? _value.targetHRMul
           : targetHRMul // ignore: cast_nullable_to_non_nullable
               as double,
-      lowHRMul: lowHRMul == freezed
+      lowHRMul: null == lowHRMul
           ? _value.lowHRMul
           : lowHRMul // ignore: cast_nullable_to_non_nullable
               as double,
-      highHRMul: highHRMul == freezed
+      highHRMul: null == highHRMul
           ? _value.highHRMul
           : highHRMul // ignore: cast_nullable_to_non_nullable
               as double,
-      sigmaHR: sigmaHR == freezed
+      sigmaHR: null == sigmaHR
           ? _value.sigmaHR
           : sigmaHR // ignore: cast_nullable_to_non_nullable
               as double,
-      shortFoot: shortFoot == freezed
+      shortFoot: null == shortFoot
           ? _value.shortFoot
           : shortFoot // ignore: cast_nullable_to_non_nullable
               as double,
-      longShoulder: longShoulder == freezed
+      longShoulder: null == longShoulder
           ? _value.longShoulder
           : longShoulder // ignore: cast_nullable_to_non_nullable
               as double,
-      longFoot: longFoot == freezed
+      longFoot: null == longFoot
           ? _value.longFoot
           : longFoot // ignore: cast_nullable_to_non_nullable
               as double,
-      sigmaResult: sigmaResult == freezed
+      sigmaResult: null == sigmaResult
           ? _value.sigmaResult
           : sigmaResult // ignore: cast_nullable_to_non_nullable
               as double,
@@ -228,7 +231,7 @@ class __$$_TrackInitFISCopyWithImpl<$Res>
 @JsonSerializable(fieldRename: FieldRename.pascal, explicitToJson: true)
 class _$_TrackInitFIS with DiagnosticableTreeMixin implements _TrackInitFIS {
   const _$_TrackInitFIS(
-      {this.delay = const Duration(milliseconds: 100),
+      {this.speed = 1,
       this.lengthMeter = 0.1,
       this.baseHR = 60,
       this.targetHRMul = 1.5,
@@ -245,7 +248,7 @@ class _$_TrackInitFIS with DiagnosticableTreeMixin implements _TrackInitFIS {
 
   @override
   @JsonKey()
-  final Duration delay;
+  final double speed;
   @override
   @JsonKey()
   final double lengthMeter;
@@ -279,7 +282,7 @@ class _$_TrackInitFIS with DiagnosticableTreeMixin implements _TrackInitFIS {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TrackInitFIS(delay: $delay, lengthMeter: $lengthMeter, baseHR: $baseHR, targetHRMul: $targetHRMul, lowHRMul: $lowHRMul, highHRMul: $highHRMul, sigmaHR: $sigmaHR, shortFoot: $shortFoot, longShoulder: $longShoulder, longFoot: $longFoot, sigmaResult: $sigmaResult)';
+    return 'TrackInitFIS(speed: $speed, lengthMeter: $lengthMeter, baseHR: $baseHR, targetHRMul: $targetHRMul, lowHRMul: $lowHRMul, highHRMul: $highHRMul, sigmaHR: $sigmaHR, shortFoot: $shortFoot, longShoulder: $longShoulder, longFoot: $longFoot, sigmaResult: $sigmaResult)';
   }
 
   @override
@@ -287,7 +290,7 @@ class _$_TrackInitFIS with DiagnosticableTreeMixin implements _TrackInitFIS {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'TrackInitFIS'))
-      ..add(DiagnosticsProperty('delay', delay))
+      ..add(DiagnosticsProperty('speed', speed))
       ..add(DiagnosticsProperty('lengthMeter', lengthMeter))
       ..add(DiagnosticsProperty('baseHR', baseHR))
       ..add(DiagnosticsProperty('targetHRMul', targetHRMul))
@@ -305,41 +308,46 @@ class _$_TrackInitFIS with DiagnosticableTreeMixin implements _TrackInitFIS {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TrackInitFIS &&
-            const DeepCollectionEquality().equals(other.delay, delay) &&
-            const DeepCollectionEquality()
-                .equals(other.lengthMeter, lengthMeter) &&
-            const DeepCollectionEquality().equals(other.baseHR, baseHR) &&
-            const DeepCollectionEquality()
-                .equals(other.targetHRMul, targetHRMul) &&
-            const DeepCollectionEquality().equals(other.lowHRMul, lowHRMul) &&
-            const DeepCollectionEquality().equals(other.highHRMul, highHRMul) &&
-            const DeepCollectionEquality().equals(other.sigmaHR, sigmaHR) &&
-            const DeepCollectionEquality().equals(other.shortFoot, shortFoot) &&
-            const DeepCollectionEquality()
-                .equals(other.longShoulder, longShoulder) &&
-            const DeepCollectionEquality().equals(other.longFoot, longFoot) &&
-            const DeepCollectionEquality()
-                .equals(other.sigmaResult, sigmaResult));
+            (identical(other.speed, speed) || other.speed == speed) &&
+            (identical(other.lengthMeter, lengthMeter) ||
+                other.lengthMeter == lengthMeter) &&
+            (identical(other.baseHR, baseHR) || other.baseHR == baseHR) &&
+            (identical(other.targetHRMul, targetHRMul) ||
+                other.targetHRMul == targetHRMul) &&
+            (identical(other.lowHRMul, lowHRMul) ||
+                other.lowHRMul == lowHRMul) &&
+            (identical(other.highHRMul, highHRMul) ||
+                other.highHRMul == highHRMul) &&
+            (identical(other.sigmaHR, sigmaHR) || other.sigmaHR == sigmaHR) &&
+            (identical(other.shortFoot, shortFoot) ||
+                other.shortFoot == shortFoot) &&
+            (identical(other.longShoulder, longShoulder) ||
+                other.longShoulder == longShoulder) &&
+            (identical(other.longFoot, longFoot) ||
+                other.longFoot == longFoot) &&
+            (identical(other.sigmaResult, sigmaResult) ||
+                other.sigmaResult == sigmaResult));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(delay),
-      const DeepCollectionEquality().hash(lengthMeter),
-      const DeepCollectionEquality().hash(baseHR),
-      const DeepCollectionEquality().hash(targetHRMul),
-      const DeepCollectionEquality().hash(lowHRMul),
-      const DeepCollectionEquality().hash(highHRMul),
-      const DeepCollectionEquality().hash(sigmaHR),
-      const DeepCollectionEquality().hash(shortFoot),
-      const DeepCollectionEquality().hash(longShoulder),
-      const DeepCollectionEquality().hash(longFoot),
-      const DeepCollectionEquality().hash(sigmaResult));
+      speed,
+      lengthMeter,
+      baseHR,
+      targetHRMul,
+      lowHRMul,
+      highHRMul,
+      sigmaHR,
+      shortFoot,
+      longShoulder,
+      longFoot,
+      sigmaResult);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TrackInitFISCopyWith<_$_TrackInitFIS> get copyWith =>
       __$$_TrackInitFISCopyWithImpl<_$_TrackInitFIS>(this, _$identity);
 
@@ -353,7 +361,7 @@ class _$_TrackInitFIS with DiagnosticableTreeMixin implements _TrackInitFIS {
 
 abstract class _TrackInitFIS implements TrackInitFIS {
   const factory _TrackInitFIS(
-      {final Duration delay,
+      {final double speed,
       final double lengthMeter,
       final double baseHR,
       final double targetHRMul,
@@ -369,7 +377,7 @@ abstract class _TrackInitFIS implements TrackInitFIS {
       _$_TrackInitFIS.fromJson;
 
   @override
-  Duration get delay;
+  double get speed;
   @override
   double get lengthMeter;
   @override
