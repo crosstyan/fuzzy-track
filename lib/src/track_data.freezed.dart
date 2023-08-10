@@ -14,15 +14,15 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-TrackData _$TrackDataFromJson(Map<String, dynamic> json) {
-  return _TrackData.fromJson(json);
+SpeedHrState _$SpeedHrStateFromJson(Map<String, dynamic> json) {
+  return _SpeedHrState.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TrackData {
-  List<TrackInitFIS> get group => throw _privateConstructorUsedError;
+mixin _$SpeedHrState {
+  List<SpeedHrFISParams> get group => throw _privateConstructorUsedError;
   int get time => throw _privateConstructorUsedError;
-  int get windowSize => throw _privateConstructorUsedError;
+  int get stability => throw _privateConstructorUsedError;
   double get possibility => throw _privateConstructorUsedError;
 
   /// speed in m/s
@@ -34,19 +34,20 @@ mixin _$TrackData {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TrackDataCopyWith<TrackData> get copyWith =>
+  $SpeedHrStateCopyWith<SpeedHrState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TrackDataCopyWith<$Res> {
-  factory $TrackDataCopyWith(TrackData value, $Res Function(TrackData) then) =
-      _$TrackDataCopyWithImpl<$Res, TrackData>;
+abstract class $SpeedHrStateCopyWith<$Res> {
+  factory $SpeedHrStateCopyWith(
+          SpeedHrState value, $Res Function(SpeedHrState) then) =
+      _$SpeedHrStateCopyWithImpl<$Res, SpeedHrState>;
   @useResult
   $Res call(
-      {List<TrackInitFIS> group,
+      {List<SpeedHrFISParams> group,
       int time,
-      int windowSize,
+      int stability,
       double possibility,
       double speed,
       double hr,
@@ -56,9 +57,9 @@ abstract class $TrackDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TrackDataCopyWithImpl<$Res, $Val extends TrackData>
-    implements $TrackDataCopyWith<$Res> {
-  _$TrackDataCopyWithImpl(this._value, this._then);
+class _$SpeedHrStateCopyWithImpl<$Res, $Val extends SpeedHrState>
+    implements $SpeedHrStateCopyWith<$Res> {
+  _$SpeedHrStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -70,7 +71,7 @@ class _$TrackDataCopyWithImpl<$Res, $Val extends TrackData>
   $Res call({
     Object? group = null,
     Object? time = null,
-    Object? windowSize = null,
+    Object? stability = null,
     Object? possibility = null,
     Object? speed = null,
     Object? hr = null,
@@ -82,14 +83,14 @@ class _$TrackDataCopyWithImpl<$Res, $Val extends TrackData>
       group: null == group
           ? _value.group
           : group // ignore: cast_nullable_to_non_nullable
-              as List<TrackInitFIS>,
+              as List<SpeedHrFISParams>,
       time: null == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as int,
-      windowSize: null == windowSize
-          ? _value.windowSize
-          : windowSize // ignore: cast_nullable_to_non_nullable
+      stability: null == stability
+          ? _value.stability
+          : stability // ignore: cast_nullable_to_non_nullable
               as int,
       possibility: null == possibility
           ? _value.possibility
@@ -120,16 +121,17 @@ class _$TrackDataCopyWithImpl<$Res, $Val extends TrackData>
 }
 
 /// @nodoc
-abstract class _$$_TrackDataCopyWith<$Res> implements $TrackDataCopyWith<$Res> {
-  factory _$$_TrackDataCopyWith(
-          _$_TrackData value, $Res Function(_$_TrackData) then) =
-      __$$_TrackDataCopyWithImpl<$Res>;
+abstract class _$$_SpeedHrStateCopyWith<$Res>
+    implements $SpeedHrStateCopyWith<$Res> {
+  factory _$$_SpeedHrStateCopyWith(
+          _$_SpeedHrState value, $Res Function(_$_SpeedHrState) then) =
+      __$$_SpeedHrStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {List<TrackInitFIS> group,
+      {List<SpeedHrFISParams> group,
       int time,
-      int windowSize,
+      int stability,
       double possibility,
       double speed,
       double hr,
@@ -139,11 +141,11 @@ abstract class _$$_TrackDataCopyWith<$Res> implements $TrackDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TrackDataCopyWithImpl<$Res>
-    extends _$TrackDataCopyWithImpl<$Res, _$_TrackData>
-    implements _$$_TrackDataCopyWith<$Res> {
-  __$$_TrackDataCopyWithImpl(
-      _$_TrackData _value, $Res Function(_$_TrackData) _then)
+class __$$_SpeedHrStateCopyWithImpl<$Res>
+    extends _$SpeedHrStateCopyWithImpl<$Res, _$_SpeedHrState>
+    implements _$$_SpeedHrStateCopyWith<$Res> {
+  __$$_SpeedHrStateCopyWithImpl(
+      _$_SpeedHrState _value, $Res Function(_$_SpeedHrState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -151,7 +153,7 @@ class __$$_TrackDataCopyWithImpl<$Res>
   $Res call({
     Object? group = null,
     Object? time = null,
-    Object? windowSize = null,
+    Object? stability = null,
     Object? possibility = null,
     Object? speed = null,
     Object? hr = null,
@@ -159,18 +161,18 @@ class __$$_TrackDataCopyWithImpl<$Res>
     Object? lastTickTime = null,
     Object? index = null,
   }) {
-    return _then(_$_TrackData(
+    return _then(_$_SpeedHrState(
       group: null == group
           ? _value._group
           : group // ignore: cast_nullable_to_non_nullable
-              as List<TrackInitFIS>,
+              as List<SpeedHrFISParams>,
       time: null == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as int,
-      windowSize: null == windowSize
-          ? _value.windowSize
-          : windowSize // ignore: cast_nullable_to_non_nullable
+      stability: null == stability
+          ? _value.stability
+          : stability // ignore: cast_nullable_to_non_nullable
               as int,
       possibility: null == possibility
           ? _value.possibility
@@ -203,11 +205,11 @@ class __$$_TrackDataCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal, explicitToJson: true)
-class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
-  const _$_TrackData(
-      {required final List<TrackInitFIS> group,
+class _$_SpeedHrState with DiagnosticableTreeMixin implements _SpeedHrState {
+  const _$_SpeedHrState(
+      {required final List<SpeedHrFISParams> group,
       this.time = 0,
-      this.windowSize = 4,
+      this.stability = 4,
       this.possibility = 0,
       this.speed = 1,
       this.hr = 0,
@@ -215,17 +217,17 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
       required this.lastTickTime,
       required this.index})
       : assert(time >= 0),
-        assert(windowSize > 0),
+        assert(stability > 0),
         assert(index >= 0),
         _group = group,
         _resultWindow = resultWindow;
 
-  factory _$_TrackData.fromJson(Map<String, dynamic> json) =>
-      _$$_TrackDataFromJson(json);
+  factory _$_SpeedHrState.fromJson(Map<String, dynamic> json) =>
+      _$$_SpeedHrStateFromJson(json);
 
-  final List<TrackInitFIS> _group;
+  final List<SpeedHrFISParams> _group;
   @override
-  List<TrackInitFIS> get group {
+  List<SpeedHrFISParams> get group {
     if (_group is EqualUnmodifiableListView) return _group;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_group);
@@ -236,7 +238,7 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
   final int time;
   @override
   @JsonKey()
-  final int windowSize;
+  final int stability;
   @override
   @JsonKey()
   final double possibility;
@@ -263,17 +265,17 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TrackData(group: $group, time: $time, windowSize: $windowSize, possibility: $possibility, speed: $speed, hr: $hr, resultWindow: $resultWindow, lastTickTime: $lastTickTime, index: $index)';
+    return 'SpeedHrState(group: $group, time: $time, stability: $stability, possibility: $possibility, speed: $speed, hr: $hr, resultWindow: $resultWindow, lastTickTime: $lastTickTime, index: $index)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'TrackData'))
+      ..add(DiagnosticsProperty('type', 'SpeedHrState'))
       ..add(DiagnosticsProperty('group', group))
       ..add(DiagnosticsProperty('time', time))
-      ..add(DiagnosticsProperty('windowSize', windowSize))
+      ..add(DiagnosticsProperty('stability', stability))
       ..add(DiagnosticsProperty('possibility', possibility))
       ..add(DiagnosticsProperty('speed', speed))
       ..add(DiagnosticsProperty('hr', hr))
@@ -286,11 +288,11 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TrackData &&
+            other is _$_SpeedHrState &&
             const DeepCollectionEquality().equals(other._group, _group) &&
             (identical(other.time, time) || other.time == time) &&
-            (identical(other.windowSize, windowSize) ||
-                other.windowSize == windowSize) &&
+            (identical(other.stability, stability) ||
+                other.stability == stability) &&
             (identical(other.possibility, possibility) ||
                 other.possibility == possibility) &&
             (identical(other.speed, speed) || other.speed == speed) &&
@@ -308,7 +310,7 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
       runtimeType,
       const DeepCollectionEquality().hash(_group),
       time,
-      windowSize,
+      stability,
       possibility,
       speed,
       hr,
@@ -319,38 +321,38 @@ class _$_TrackData with DiagnosticableTreeMixin implements _TrackData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TrackDataCopyWith<_$_TrackData> get copyWith =>
-      __$$_TrackDataCopyWithImpl<_$_TrackData>(this, _$identity);
+  _$$_SpeedHrStateCopyWith<_$_SpeedHrState> get copyWith =>
+      __$$_SpeedHrStateCopyWithImpl<_$_SpeedHrState>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TrackDataToJson(
+    return _$$_SpeedHrStateToJson(
       this,
     );
   }
 }
 
-abstract class _TrackData implements TrackData {
-  const factory _TrackData(
-      {required final List<TrackInitFIS> group,
+abstract class _SpeedHrState implements SpeedHrState {
+  const factory _SpeedHrState(
+      {required final List<SpeedHrFISParams> group,
       final int time,
-      final int windowSize,
+      final int stability,
       final double possibility,
       final double speed,
       final double hr,
       required final List<bool> resultWindow,
       required final DateTime lastTickTime,
-      required final int index}) = _$_TrackData;
+      required final int index}) = _$_SpeedHrState;
 
-  factory _TrackData.fromJson(Map<String, dynamic> json) =
-      _$_TrackData.fromJson;
+  factory _SpeedHrState.fromJson(Map<String, dynamic> json) =
+      _$_SpeedHrState.fromJson;
 
   @override
-  List<TrackInitFIS> get group;
+  List<SpeedHrFISParams> get group;
   @override
   int get time;
   @override
-  int get windowSize;
+  int get stability;
   @override
   double get possibility;
   @override
@@ -367,6 +369,6 @@ abstract class _TrackData implements TrackData {
   int get index;
   @override
   @JsonKey(ignore: true)
-  _$$_TrackDataCopyWith<_$_TrackData> get copyWith =>
+  _$$_SpeedHrStateCopyWith<_$_SpeedHrState> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-TrackInitFIS _$TrackInitFISFromJson(Map<String, dynamic> json) {
+SpeedHrFISParams _$SpeedHrFISParamsFromJson(Map<String, dynamic> json) {
   return _TrackInitFIS.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TrackInitFIS {
+mixin _$SpeedHrFISParams {
   double get speed => throw _privateConstructorUsedError;
   double get lengthMeter => throw _privateConstructorUsedError;
   double get baseHR => throw _privateConstructorUsedError;
@@ -34,15 +34,15 @@ mixin _$TrackInitFIS {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TrackInitFISCopyWith<TrackInitFIS> get copyWith =>
+  $SpeedHrFISParamsCopyWith<SpeedHrFISParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TrackInitFISCopyWith<$Res> {
-  factory $TrackInitFISCopyWith(
-          TrackInitFIS value, $Res Function(TrackInitFIS) then) =
-      _$TrackInitFISCopyWithImpl<$Res, TrackInitFIS>;
+abstract class $SpeedHrFISParamsCopyWith<$Res> {
+  factory $SpeedHrFISParamsCopyWith(
+          SpeedHrFISParams value, $Res Function(SpeedHrFISParams) then) =
+      _$SpeedHrFISParamsCopyWithImpl<$Res, SpeedHrFISParams>;
   @useResult
   $Res call(
       {double speed,
@@ -59,9 +59,9 @@ abstract class $TrackInitFISCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TrackInitFISCopyWithImpl<$Res, $Val extends TrackInitFIS>
-    implements $TrackInitFISCopyWith<$Res> {
-  _$TrackInitFISCopyWithImpl(this._value, this._then);
+class _$SpeedHrFISParamsCopyWithImpl<$Res, $Val extends SpeedHrFISParams>
+    implements $SpeedHrFISParamsCopyWith<$Res> {
+  _$SpeedHrFISParamsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -134,7 +134,7 @@ class _$TrackInitFISCopyWithImpl<$Res, $Val extends TrackInitFIS>
 
 /// @nodoc
 abstract class _$$_TrackInitFISCopyWith<$Res>
-    implements $TrackInitFISCopyWith<$Res> {
+    implements $SpeedHrFISParamsCopyWith<$Res> {
   factory _$$_TrackInitFISCopyWith(
           _$_TrackInitFIS value, $Res Function(_$_TrackInitFIS) then) =
       __$$_TrackInitFISCopyWithImpl<$Res>;
@@ -156,7 +156,7 @@ abstract class _$$_TrackInitFISCopyWith<$Res>
 
 /// @nodoc
 class __$$_TrackInitFISCopyWithImpl<$Res>
-    extends _$TrackInitFISCopyWithImpl<$Res, _$_TrackInitFIS>
+    extends _$SpeedHrFISParamsCopyWithImpl<$Res, _$_TrackInitFIS>
     implements _$$_TrackInitFISCopyWith<$Res> {
   __$$_TrackInitFISCopyWithImpl(
       _$_TrackInitFIS _value, $Res Function(_$_TrackInitFIS) _then)
@@ -282,14 +282,14 @@ class _$_TrackInitFIS with DiagnosticableTreeMixin implements _TrackInitFIS {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TrackInitFIS(speed: $speed, lengthMeter: $lengthMeter, baseHR: $baseHR, targetHRMul: $targetHRMul, lowHRMul: $lowHRMul, highHRMul: $highHRMul, sigmaHR: $sigmaHR, shortFoot: $shortFoot, longShoulder: $longShoulder, longFoot: $longFoot, sigmaResult: $sigmaResult)';
+    return 'SpeedHrFISParams(speed: $speed, lengthMeter: $lengthMeter, baseHR: $baseHR, targetHRMul: $targetHRMul, lowHRMul: $lowHRMul, highHRMul: $highHRMul, sigmaHR: $sigmaHR, shortFoot: $shortFoot, longShoulder: $longShoulder, longFoot: $longFoot, sigmaResult: $sigmaResult)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'TrackInitFIS'))
+      ..add(DiagnosticsProperty('type', 'SpeedHrFISParams'))
       ..add(DiagnosticsProperty('speed', speed))
       ..add(DiagnosticsProperty('lengthMeter', lengthMeter))
       ..add(DiagnosticsProperty('baseHR', baseHR))
@@ -359,7 +359,7 @@ class _$_TrackInitFIS with DiagnosticableTreeMixin implements _TrackInitFIS {
   }
 }
 
-abstract class _TrackInitFIS implements TrackInitFIS {
+abstract class _TrackInitFIS implements SpeedHrFISParams {
   const factory _TrackInitFIS(
       {final double speed,
       final double lengthMeter,

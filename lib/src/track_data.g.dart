@@ -6,12 +6,13 @@ part of 'track_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TrackData _$$_TrackDataFromJson(Map<String, dynamic> json) => _$_TrackData(
+_$_SpeedHrState _$$_SpeedHrStateFromJson(Map<String, dynamic> json) =>
+    _$_SpeedHrState(
       group: (json['Group'] as List<dynamic>)
-          .map((e) => TrackInitFIS.fromJson(e as Map<String, dynamic>))
+          .map((e) => SpeedHrFISParams.fromJson(e as Map<String, dynamic>))
           .toList(),
       time: json['Time'] as int? ?? 0,
-      windowSize: json['WindowSize'] as int? ?? 4,
+      stability: json['Stability'] as int? ?? 4,
       possibility: (json['Possibility'] as num?)?.toDouble() ?? 0,
       speed: (json['Speed'] as num?)?.toDouble() ?? 1,
       hr: (json['Hr'] as num?)?.toDouble() ?? 0,
@@ -22,11 +23,11 @@ _$_TrackData _$$_TrackDataFromJson(Map<String, dynamic> json) => _$_TrackData(
       index: json['Index'] as int,
     );
 
-Map<String, dynamic> _$$_TrackDataToJson(_$_TrackData instance) =>
+Map<String, dynamic> _$$_SpeedHrStateToJson(_$_SpeedHrState instance) =>
     <String, dynamic>{
       'Group': instance.group.map((e) => e.toJson()).toList(),
       'Time': instance.time,
-      'WindowSize': instance.windowSize,
+      'Stability': instance.stability,
       'Possibility': instance.possibility,
       'Speed': instance.speed,
       'Hr': instance.hr,

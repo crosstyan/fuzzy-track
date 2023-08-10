@@ -11,18 +11,22 @@ enum TrackMove {
   notChanged,
 }
 
-class TrackGroup {
-  final double baseHR;
-  final double targetHRMul;
+class SpeedHrController {
   double _time = 0;
   int _index = 0;
-  int windowSize = 5;
+
+  /// i.e. the window size of the result window
+  /// 0 < stability <= positive integer (However I don't recommend to set it greater than 5)
+  /// You would need roll consecutive [stability] times True to push it to next level.
+  ///
+  /// TODO: better algorithm to determine the stability. something like 5 out of 7 times?
+  int stability = 5;
   double _lastPossibility = 0;
-  DateTime initTickTime;
-  DateTime _lastTickTime;
-  late TrackFIS _current = _group[_index];
-  late final List<TrackFIS> _group;
-  late final List<TrackInitFIS> _groupInit;
+  late DateTime initTickTime;
+  late DateTime _lastTickTime;
+  late SpeedHrFIS _current = _group[_index];
+  late final List<SpeedHrFIS> _group;
+  late final List<SpeedHrFISParams> _groupInit;
   List<bool> _resultWindow = [];
 
   get index {
@@ -41,39 +45,40 @@ class TrackGroup {
     return _group.length - 1;
   }
 
-  static List<TrackInitFIS> getDefaultGroup(double baseHR, double targetHRMul) {
+  static List<SpeedHrFISParams> getDefaultGroup(
+      double baseHR, double targetHRMul) {
     return [
-      TrackInitFIS(
+      SpeedHrFISParams(
           speed: 0.5, baseHR: baseHR, shortFoot: 30, targetHRMul: targetHRMul),
-      TrackInitFIS(
+      SpeedHrFISParams(
           speed: 1, baseHR: baseHR, shortFoot: 10, targetHRMul: targetHRMul),
-      TrackInitFIS(
+      SpeedHrFISParams(
           speed: 1.25, baseHR: baseHR, shortFoot: 10, targetHRMul: targetHRMul),
-      TrackInitFIS(
+      SpeedHrFISParams(
           speed: 1.5,
           baseHR: baseHR,
           shortFoot: 5,
           sigmaHR: 8,
           targetHRMul: targetHRMul),
-      TrackInitFIS(
+      SpeedHrFISParams(
           speed: 1.75,
           baseHR: baseHR,
           shortFoot: 5,
           sigmaHR: 5,
           targetHRMul: targetHRMul),
-      TrackInitFIS(
+      SpeedHrFISParams(
           speed: 2,
           baseHR: baseHR,
           shortFoot: 10,
           sigmaHR: 3,
           targetHRMul: targetHRMul),
-      TrackInitFIS(
+      SpeedHrFISParams(
           speed: 2.5,
           baseHR: baseHR,
           shortFoot: 5,
           sigmaHR: 3,
           targetHRMul: targetHRMul),
-      TrackInitFIS(
+      SpeedHrFISParams(
           speed: 3,
           baseHR: baseHR,
           shortFoot: 3,
@@ -82,16 +87,34 @@ class TrackGroup {
     ];
   }
 
-  TrackGroup(
-      {this.baseHR = 60,
-      required this.initTickTime,
-      this.windowSize = 5,
-      this.targetHRMul = 1.5})
-      : _groupInit = TrackGroup.getDefaultGroup(baseHR, targetHRMul),
-        _group = TrackGroup.getDefaultGroup(baseHR, targetHRMul)
-            .map((data) => TrackFIS.fromInit(data))
-            .toList(),
-        _lastTickTime = initTickTime;
+  /// baseHR and targetHRMul are used to construct the default group.
+  /// You could provide your custom group by using [SpeedHrController.fromParamsGroup]
+  SpeedHrController(
+      {baseHR = 60,
+      targetHRMul = 1.5,
+      DateTime? initTickTime,
+      this.stability = 5})
+      : _groupInit = SpeedHrController.getDefaultGroup(baseHR, targetHRMul),
+        _group = SpeedHrController.getDefaultGroup(baseHR, targetHRMul)
+            .map((data) => SpeedHrFIS.fromInit(data))
+            .toList() {
+    if (initTickTime == null) {
+      this.initTickTime = DateTime.now();
+    } else {
+      this.initTickTime = initTickTime;
+    }
+    _lastTickTime = this.initTickTime;
+  }
+
+  factory SpeedHrController.fromParamsGroup(List<SpeedHrFISParams> group,
+      {DateTime? initTickTime}) {
+    initTickTime ??= DateTime.now();
+    return SpeedHrController(
+      initTickTime: initTickTime,
+    )
+      .._group = group.map((data) => SpeedHrFIS.fromInit(data)).toList()
+      .._groupInit = group;
+  }
 
   void up() {
     _index = _index + 1;
@@ -139,7 +162,8 @@ class TrackGroup {
 
   /// @side effect
   List<bool> _addToWindow(bool elem) {
-    _resultWindow = TrackGroup.addDequeue(_resultWindow, windowSize, elem);
+    _resultWindow =
+        SpeedHrController.addDequeue(_resultWindow, stability, elem);
     return _resultWindow;
   }
 
@@ -167,7 +191,7 @@ class TrackGroup {
   }
 
   /// @side effect
-  TrackData step(double hr, DateTime time) {
+  SpeedHrState step(double hr, DateTime time) {
     final diff = time.difference(_lastTickTime);
     if (diff.inSeconds >= 1) {
       _lastTickTime = time;
@@ -175,10 +199,9 @@ class TrackGroup {
       _time = _time + diff.inSeconds;
     }
     _getMove(hr);
-    return TrackData(
+    return SpeedHrState(
         group: _groupInit,
         time: _time.toInt(),
-        windowSize: windowSize,
         possibility: _lastPossibility,
         speed: _current.speed,
         resultWindow: _resultWindow,
@@ -186,15 +209,14 @@ class TrackGroup {
         index: index);
   }
 
-  void reset() {
-    resetWith(initTickTime);
-  }
-
-  void resetWith(DateTime initTime) {
+  void reset(DateTime? initTickTime) {
+    initTickTime ??= DateTime.now();
     _time = 0;
     _index = 0;
-    initTickTime = initTime;
-    _lastTickTime = initTime;
+    this.initTickTime = initTickTime;
+    this._lastTickTime = initTickTime;
     _current = _group[_index];
   }
+
+  void resetWith() {}
 }

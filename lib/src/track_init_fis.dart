@@ -5,10 +5,11 @@ import 'package:fuzzy_track/fuzzy_track.dart';
 part 'track_init_fis.freezed.dart';
 part 'track_init_fis.g.dart';
 
+/// a pure data class for init [SpeedHrFIS]
 @freezed
-class TrackInitFIS with _$TrackInitFIS {
+class SpeedHrFISParams with _$SpeedHrFISParams {
   @JsonSerializable(fieldRename: FieldRename.pascal, explicitToJson: true)
-  const factory TrackInitFIS({
+  const factory SpeedHrFISParams({
     @Default(1) double speed,
     @Default(0.1) double lengthMeter,
     @Default(60) double baseHR,
@@ -22,39 +23,33 @@ class TrackInitFIS with _$TrackInitFIS {
     @Default(10) double sigmaResult,
   }) = _TrackInitFIS;
 
-  factory TrackInitFIS.fromJson(Map<String, dynamic> json) =>
-      _$TrackInitFISFromJson(json);
+  factory SpeedHrFISParams.fromJson(Map<String, dynamic> json) =>
+      _$SpeedHrFISParamsFromJson(json);
 }
 
-class TrackFIS extends FIS {
+/// like [SpeedHrBaseFIS] but with actual speed parameter for control the strip
+/// and can be serialized/deserialized with [SpeedHrFISParams]
+class SpeedHrFIS extends SpeedHrBaseFIS {
   /// Speed in m/s
   final double speed;
+
   get speedKmh => speed * 3.6;
 
-  TrackFIS({
+  SpeedHrFIS({
     this.speed = 1,
-    baseHR = 60,
-    targetHRMul = 1.5,
-    lowHRMul = 1,
-    highHRMul = 2,
-    sigmaHR = 10,
-    shortFoot = 30,
-    longShoulder = 90,
-    longFoot = 0,
-    sigmaResult = 10,
-  }) : super(
-            baseHR: baseHR,
-            targetHRMul: targetHRMul,
-            lowHRMul: lowHRMul,
-            highHRMul: highHRMul,
-            sigmaHR: sigmaHR,
-            shortFoot: shortFoot,
-            longShoulder: longShoulder,
-            sigmaResult: sigmaResult,
-            longFoot: longFoot);
+    super.baseHR,
+    super.targetHRMul,
+    super.lowHRMul,
+    super.highHRMul,
+    super.sigmaHR,
+    super.shortFoot,
+    super.longShoulder,
+    super.longFoot,
+    super.sigmaResult = 10,
+  });
 
-  factory TrackFIS.fromInit(TrackInitFIS data) {
-    return TrackFIS(
+  factory SpeedHrFIS.fromInit(SpeedHrFISParams data) {
+    return SpeedHrFIS(
         baseHR: data.baseHR,
         targetHRMul: data.targetHRMul,
         lowHRMul: data.lowHRMul,
@@ -67,8 +62,8 @@ class TrackFIS extends FIS {
         speed: data.speed);
   }
 
-  TrackInitFIS getInit() {
-    return TrackInitFIS(
+  SpeedHrFISParams getInit() {
+    return SpeedHrFISParams(
       baseHR: baseHR,
       targetHRMul: targetHRMul,
       lowHRMul: lowHRMul,

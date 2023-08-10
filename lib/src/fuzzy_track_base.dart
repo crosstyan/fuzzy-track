@@ -1,5 +1,6 @@
-import 'package:fuzzylogic/fuzzylogic.dart';
 import 'dart:math';
+
+import 'package:fuzzylogic/fuzzylogic.dart';
 
 /// https://ww2.mathworks.cn/help/fuzzy/gaussmf.html
 class GaussianMF<T extends num> extends MembershipFunction<T> {
@@ -151,7 +152,7 @@ class FuzzyResult extends FuzzyVariable<num> {
   }
 }
 
-class FIS {
+class SpeedHrBaseFIS {
   final double baseHR;
   final double targetHRMul;
   final double lowHRMul;
@@ -168,10 +169,11 @@ class FIS {
       lowMul: lowHRMul,
       highMul: highHRMul,
       sigma: sigmaHR);
-  late final time = FuzzyTime(longShoulder: longShoulder, shortFoot: shortFoot, longFoot: longFoot);
+  late final time = FuzzyTime(
+      longShoulder: longShoulder, shortFoot: shortFoot, longFoot: longFoot);
   late final result = FuzzyResult(sigma: sigmaResult);
 
-  FIS(
+  SpeedHrBaseFIS(
       {this.baseHR = 70,
       this.targetHRMul = 1.5,
       this.lowHRMul = 1,

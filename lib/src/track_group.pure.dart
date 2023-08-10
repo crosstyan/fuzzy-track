@@ -1,16 +1,18 @@
 part of './track_group.dart';
 
-class TrackGroupPure {
-  List<TrackFIS> _groupCache = [];
-  List<TrackInitFIS> _groupInitCache = [];
+class SpeedHrStateController {
+  List<SpeedHrFIS> _groupCache = [];
+  List<SpeedHrFISParams> _groupInitCache = [];
 
-  TrackData step(
-      {required double hr, required DateTime time, required TrackData state}) {
+  SpeedHrState step(
+      {required double hr,
+      required DateTime time,
+      required SpeedHrState state}) {
     // here is the only not pure part of the function
     // I can of course construct FIS every time but I want to avoid it
     if (!listEquals(state.group, _groupInitCache)) {
       _groupInitCache = state.group;
-      _groupCache = _groupInitCache.map((e) => TrackFIS.fromInit(e)).toList();
+      _groupCache = _groupInitCache.map((e) => SpeedHrFIS.fromInit(e)).toList();
     }
     // every thing is pure now
     final diff = time.difference(state.lastTickTime);
@@ -19,11 +21,11 @@ class TrackGroupPure {
       final tempIdx = _validIdx(state.index);
       final current = _groupCache[tempIdx];
       final possibility = (current.eval(hr, tempTime) ?? 0) / 100;
-      final res = TrackGroup.decision(possibility.toDouble());
+      final res = SpeedHrController.decision(possibility.toDouble());
       final direction = possibility > 0;
       final List<bool> windowClone = List.from(state.resultWindow);
       final tempWindow =
-          TrackGroup.addDequeue(windowClone, state.windowSize, res);
+          SpeedHrController.addDequeue(windowClone, state.stability, res);
       final bool ans = tempWindow.reduce((value, element) => value & element);
       late final int resIndex;
       late final int resTime;
@@ -43,10 +45,10 @@ class TrackGroupPure {
         resTime = tempTime;
         resWindow = tempWindow;
       }
-      return TrackData(
+      return SpeedHrState(
           group: _groupInitCache,
           time: resTime,
-          windowSize: state.windowSize,
+          stability: state.stability,
           possibility: possibility.toDouble(),
           speed: current.speed,
           hr: hr,
